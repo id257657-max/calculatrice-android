@@ -24,6 +24,10 @@ class MainActivity : AppCompatActivity() {
 
         val tvResultat = findViewById<TextView>(R.id.tvResultat)
 
+        val btnPuissance = findViewById<Button>(R.id.btnPuissance)
+        btnPuissance.setOnClickListener {
+            effectuerCalcul(etNombre1, etNombre2, tvResultat, "^")
+        }
         // Consigne 4 : Brancher un écouteur sur chaque bouton
         btnAddition.setOnClickListener {
             effectuerCalcul(etNombre1, etNombre2, tvResultat, "+")
@@ -59,23 +63,20 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
+
         // 2. Choisir le calcul selon le bouton cliqué
         val resultat: Double = when (operation) {
             "+" -> n1 + n2
             "-" -> n1 - n2
             "*" -> n1 * n2
             "/" -> {
-                // Consigne 6 : Empêcher la division par zéro avec un Toast
                 if (n2 == 0.0) {
-                    Toast.makeText(
-                        this,
-                        "Erreur : division par zéro impossible !",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    Toast.makeText(this, "Erreur : division par zéro impossible !", Toast.LENGTH_LONG).show()
                     return
                 }
                 n1 / n2
             }
+            "^" -> Math.pow(n1, n2) // Opération de puissance
             else -> 0.0
         }
 
