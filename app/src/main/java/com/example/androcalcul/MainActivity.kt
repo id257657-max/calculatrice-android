@@ -54,36 +54,42 @@ class MainActivity : AppCompatActivity() {
         tvResultat: TextView,
         operation: String
     ) {
-        // 1. Récupérer le texte saisi et le convertir en Double (nombre décimal)
-        val n1 = etNombre1.text.toString().toDoubleOrNull()
-        val n2 = etNombre2.text.toString().toDoubleOrNull()
+        // 1. Récupération des valeurs textuelles
+        val texte1 = etNombre1.text.toString().trim()
+        val texte2 = etNombre2.text.toString().trim()
 
-        // Sécurité si l'un des deux champs est vide
+        // 2. Vérification que les champs ne sont pas vides
+        val n1 = texte1.toDoubleOrNull()
+        val n2 = texte2.toDoubleOrNull()
+
         if (n1 == null || n2 == null) {
-            Toast.makeText(this, "Veuillez entrer deux nombres", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Veuillez entrer deux nombres valides", Toast.LENGTH_SHORT).show()
             return
         }
 
-
-        // 2. Choisir le calcul selon le bouton cliqué
+        // 3. Calcul sécurisé
         val resultat: Double = when (operation) {
             "+" -> n1 + n2
             "-" -> n1 - n2
             "*" -> n1 * n2
             "/" -> {
-                Log.d("TP5_CALCUL", "Division securisee : n1=$n1, n2=$n2")
+                // SÉCURITÉ CRUCIALE : on intercepte avant de calculer
                 if (n2 == 0.0) {
-                    Log.w("TP5_CALCUL", "Division par zero interceptee avec succes")
-                    Toast.makeText(this, "Erreur : division par zéro impossible !", Toast.LENGTH_LONG).show()
-                    return
+                    Toast.makeText(
+                        this,
+                        "Erreur : division par zéro impossible !",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    tvResultat.text = "Erreur : division par zéro"
+                    return // ON SORT IMMÉDIATEMENT POUR NE PAS PLANTER
                 }
                 n1 / n2
             }
-            "^" -> Math.pow(n1, n2) // Opération de puissance
+            "^" -> Math.pow(n1, n2)
             else -> 0.0
         }
 
-        // 3. Afficher le résultat dans le TextView
+        // 4. Affichage du résultat si tout s'est bien passé
         tvResultat.text = "Résultat : $resultat"
     }
 }
