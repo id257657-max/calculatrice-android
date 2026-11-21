@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import android.util.Log
 
 class MainActivity : AppCompatActivity() {
 
@@ -70,7 +71,9 @@ class MainActivity : AppCompatActivity() {
             "-" -> n1 - n2
             "*" -> n1 * n2
             "/" -> {
+                Log.d("TP5_CALCUL", "Division securisee : n1=$n1, n2=$n2")
                 if (n2 == 0.0) {
+                    Log.w("TP5_CALCUL", "Division par zero interceptee avec succes")
                     Toast.makeText(this, "Erreur : division par zéro impossible !", Toast.LENGTH_LONG).show()
                     return
                 }
