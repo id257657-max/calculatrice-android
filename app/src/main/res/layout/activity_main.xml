@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp"
+    tools:context=".MainActivity">
+
+    <!-- 1. Les deux champs de saisie numérique -->
+    <EditText
+        android:id="@+id/etNombre1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/premier_nombre"
+        android:importantForAutofill="no"
+        android:inputType="numberDecimal|numberSigned"
+        android:minHeight="48dp"
+        tools:targetApi="o" />
+
+    <EditText
+        android:id="@+id/etNombre2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="@string/deuxieme_nombre"
+        android:importantForAutofill="no"
+        android:inputType="numberDecimal|numberSigned"
+        android:minHeight="48dp"
+        tools:targetApi="o" />
+
+    <!-- 2. Une ligne horizontale contenant les 4 boutons d'opérations -->
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnAddition"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:minHeight="48dp"
+            android:text="@string/btn_addition" />
+
+        <Button
+            android:id="@+id/btnSoustraction"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:minHeight="48dp"
+            android:text="@string/btn_soustraction" />
+
+        <Button
+            android:id="@+id/btnMultiplication"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:minHeight="48dp"
+            android:text="@string/btn_multiplication" />
+
+        <Button
+            android:id="@+id/btnDivision"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:minHeight="48dp"
+            android:text="@string/btn_division" />
+
+    </LinearLayout>
+
+    <!-- 3. Le champ de texte pour afficher le résultat -->
+    <TextView
+        android:id="@+id/tvResultat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/resultat"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">AndroCalcul</string>
+    <string name="premier_nombre">Premier nombre</string>
+    <string name="deuxieme_nombre">Deuxième nombre</string>
+    <string name="btn_addition">+</string>
+    <string name="btn_soustraction">-</string>
+    <string name="btn_multiplication">×</string>
+    <string name="btn_division">÷</string>
+    <string name="resultat">Résultat : </string>
+</resources>
